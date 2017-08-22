@@ -1,0 +1,67 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ placeDetails ? placeDetails.name : "" }}</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="card-background-page">
+    <ion-card>
+        <ion-card-content>
+            <ion-slides>
+                <ng-template [ngIf]="!hasImages">
+                    <ion-slide>
+                        <img src="{{ noImage }}">
+                    </ion-slide>
+                </ng-template>
+                <ng-template [ngIf]="hasImages">
+                    <ion-slide *ngFor="let photo of placeDetails.photos">
+                        <img src="{{ photo.getUrl({'maxWidth': 1000, 'maxHeight': 300}) }}">
+                    </ion-slide>
+                </ng-template>
+            </ion-slides>
+        </ion-card-content>
+        <ion-item>
+            <ion-icon name="at" item-left large></ion-icon>
+            <h3>{{ placeDetails ? placeDetails.name : "" }}</h3>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="locate" item-left large></ion-icon>
+            <p>{{ placeDetails ? placeDetails.vicinity : "" }}</p>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="call" item-left large></ion-icon>
+            <h3>{{ placeDetails ? placeDetails.international_phone_number : "" }}</h3>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="clock" item-left large></ion-icon>
+            <p>Duration: {{ durations ? durations.text : "" }}</p>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="glasses" item-left large></ion-icon>
+            <p>Distance: {{ distance ? distance.text : "" }}</p>
+        </ion-item>
+        <ion-item>
+            <span item-left>Rating</span>
+            <span item-left>{{ placeDetails ? placeDetails.rating : "" }}</span>
+            <button ion-button icon-left clear item-end (click)="showReviews()">
+                <ion-icon name="eye"></ion-icon>
+                View Reviews
+            </button>
+        </ion-item>
+        <ion-item>
+            <button ion-button icon-left clear (click)="showMap(placeDetails)">
+                <ion-icon name="map"></ion-icon>
+                Go to Map
+            </button>
+            <button ion-button icon-right clear item-end (click)="navigate(placeDetails)">
+                <ion-icon name="navigate"></ion-icon>
+                Direction
+            </button>
+        </ion-item>
+    </ion-card>
+    <ion-card>
+        <ion-item>
+            <div id="mapdiv" #mapdiv>
+            </div>
+        </ion-item>
+    </ion-card>
+</ion-content>

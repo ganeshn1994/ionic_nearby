@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Fun
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+    <ion-card *ngFor="let funPlace of funPlaces">
+        <img src="{{ funPlace.photos ? funPlace.photos[0].getUrl({'maxWidth': 1000, 'maxHeight': 300}) :noImage }}">
+        <ion-fab right top>
+            <button ion-fab (click)="navigate(funPlace)">
+            <ion-icon name="pin"></ion-icon>
+        </button>
+        </ion-fab>
+        <ion-item>
+            <ion-icon name="compass" item-start large></ion-icon>
+            <h2>{{ funPlace.name }}</h2>
+            <p>{{funPlace.vicinity}}</p>
+        </ion-item>
+
+        <ion-item>
+            <span item-left>Rating</span>
+            <span item-left>{{funPlace.rating}}</span>
+            <button ion-button icon-left clear item-end (click)="pushPage($event,funPlace)">
+                <ion-icon name="information-circle"></ion-icon>
+                Explore
+            </button>
+        </ion-item>
+    </ion-card>
+</ion-content>

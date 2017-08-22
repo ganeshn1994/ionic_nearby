@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Food</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="card-background-page">
+    <ion-card *ngFor="let restaurant of restaurants">
+        <img src="{{ restaurant.photos ? restaurant.photos[0].getUrl({'maxWidth': 1000, 'maxHeight': 300}) :noImage }}">
+        <ion-fab right top>
+            <button ion-fab (click)="navigate(restaurant)">
+            <ion-icon name="pin"></ion-icon>
+        </button>
+        </ion-fab>
+        <ion-item>
+            <ion-icon name="compass" item-start large></ion-icon>
+            <h2>{{ restaurant.name }}</h2>
+            <p>{{restaurant.vicinity}}</p>
+        </ion-item>
+
+        <ion-item>
+            <span item-left>Rating</span>
+            <span item-left>{{restaurant.rating}}</span>
+            <button ion-button icon-left clear item-end (click)="pushPage($event,restaurant)">
+                <ion-icon name="information-circle"></ion-icon>
+                Explore
+            </button>
+        </ion-item>
+    </ion-card>
+</ion-content>

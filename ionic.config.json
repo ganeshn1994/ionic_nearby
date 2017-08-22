@@ -1,5 +1,9 @@
 {
-  "name": "MyFoodPlace",
-  "app_id": "",
-  "type": "ionic-angular"
+    "name": "FFC",
+    "app_id": "",
+    "proxies": [{
+        "path": "/",
+        "proxyUrl": "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
+    }],
+    "type": "ionic-angular"
 }

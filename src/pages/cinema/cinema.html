@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Cinema
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+    <ion-card *ngFor="let cinema of cinemas">
+        <img src="{{ cinema.photos ? cinema.photos[0].getUrl({'maxWidth': 1000, 'maxHeight': 300}) :noImage }}">
+        <ion-fab right top>
+            <button ion-fab (click)="navigate(cinema)">
+            <ion-icon name="pin"></ion-icon>
+        </button>
+        </ion-fab>
+        <ion-item>
+            <ion-icon name="compass" item-start large></ion-icon>
+            <h2>{{ cinema.name }}</h2>
+            <p>{{cinema.vicinity}}</p>
+        </ion-item>
+
+        <ion-item>
+            <span item-left>Rating</span>
+            <span item-left>{{cinema.rating}}</span>
+            <button ion-button icon-left clear item-end (click)="pushPage($event,cinema)">
+                <ion-icon name="information-circle"></ion-icon>
+                Explore
+            </button>
+        </ion-item>
+    </ion-card>
+</ion-content>
