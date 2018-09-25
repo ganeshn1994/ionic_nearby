@@ -30,9 +30,9 @@ export class FunPage {
         private geolocation: Geolocation,
         public loadingCtrl: LoadingController
     ){
-        this.mapsServices.keyword = 'shopping mall';
+        this.mapsServices.keyword = 'saloon';
         this.mapsServices.radius = 5000;
-        this.mapsServices.typeArray = ['shopping_mall'];
+        this.mapsServices.typeArray = ['saloon'];
         this.loadingSpin = this.loadingCtrl.create({
             content: 'Please wait...'
         });
